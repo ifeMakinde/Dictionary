@@ -12,6 +12,7 @@ import image10 from "../assets/image10.jpg";
 import image11 from "../assets/image11.jpg";
 import image12 from "../assets/image12.jpg";
 import image13 from "../assets/image13.jpg";
+import image14 from "../assets/image14.jpg";
 
 import {
   Carousel,
@@ -28,12 +29,13 @@ const memoriesData = [
   { id: 3, image: image4 },
   { id: 4, image: image5 },
   { id: 5, image: image6 },
+  { id: 10, image: image11 },
   { id: 6, image: image7 },
   { id: 7, image: image8 },
+  { id: 13, image: image14 },
   { id: 8, image: image9 },
-  { id: 9, image: image10 },
-  { id: 10, image: image11 },
   { id: 11, image: image12 },
+  { id: 9, image: image10 },
   { id: 12, image: image13 },
 ];
 
@@ -47,7 +49,7 @@ function Memories() {
         our core <span className="text-pink-400">memories</span>
       </h3>
 
-      <p className="text-base lg:text-md w-80 lg:w-100 text-pink-500 font-light">
+      <p className="text-base lg:text-xl w-80 lg:w-100 text-pink-500 font-light">
         {" "}
         I'd argue every moment with you is a core memory, but here are a few one
         i carefully curated

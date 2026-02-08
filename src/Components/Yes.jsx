@@ -2,6 +2,8 @@ import React from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 import gif from "../assets/yume-nikki.gif";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "motion/react";
 
 function Yes({ onClose }) {
   const yesModal = useRef(null);
@@ -21,7 +23,14 @@ function Yes({ onClose }) {
   }, [onClose]);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, scale: 0.7 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.7,
+        ease: "easeInOut",
+        // delay: 1.7,
+      }}
       className="fixed z-50 flex flex-col gap-2 justify-center items-center max-w-100 m-auto shadow-3xl text-center rounded-lg py-20 px-10 top-[25%] bottom-[15%] left-8 right-8 lg:top-35 lg:bottom-30  lg:left-8 lg:right-10 bg-white"
       ref={yesModal}
     >
@@ -47,7 +56,7 @@ function Yes({ onClose }) {
           take a quick scroll 👀
         </a>
       </button>
-    </div>
+    </motion.div>
   );
 }
 

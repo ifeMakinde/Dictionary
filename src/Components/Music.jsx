@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { Pause } from "lucide-react";
 import { Play } from "lucide-react";
-import audio from "../assets/Tml-Vibez-Ft-Lasmid-Maria.mp3";
+import audio from "../assets/Fola-Caricature.mp3";
 
 function Music() {
   const newAudio = useRef(new Audio(`${audio}`));

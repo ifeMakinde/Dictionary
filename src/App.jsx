@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <div
-        className={`relative ${isModalVisible ? "blur-md shadow-background" : "blur-none"}`}
+        className={`relative ${isModalVisible ? "blur-lg shadow-background" : "blur-none"}`}
       >
         <Valentine
           isModalVisible={isModalVisible}
