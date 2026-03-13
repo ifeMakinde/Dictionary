@@ -70,7 +70,7 @@ function MainContent() {
           {meanings[0].synonyms?.length > 0 && (
             <div className="flex gap-2">
               <h3 className="capitalize text-gray-500">synonyms</h3>
-              <li className="flex gap-2">
+              <li className="flex flex-wrap gap-2">
                 {meanings[0].synonyms.map((synonym) => (
                   <a
                     key={synonym}
