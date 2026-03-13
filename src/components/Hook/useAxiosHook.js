@@ -17,10 +17,10 @@ export function useAxiosHook() {
     try {
       setIsloading(true);
       const response = await axios.get(`${BASE_URL}${query}`);
-      if (!response.ok) {
+      if (!response.ok) 
         setError("something went wrong, please try again");
-        return;
-      }
+
+      
       setSearchedWordData(response.data[0]);
     } catch (error) {
       console.error(`Error fetching word: ${error.message}`);
