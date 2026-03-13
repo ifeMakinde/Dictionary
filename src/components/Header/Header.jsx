@@ -1,0 +1,53 @@
+import React, { useState, useContext } from "react";
+import { Book, Bookmark, ToggleRight, ToggleLeft } from "lucide-react";
+import Button from "../Button";
+import Font from "./Font";
+import BookMark from "../Bookmark";
+import { Context } from "../Context/GlobalContext";
+
+function Header() {
+  const { isActive, setIsActive } = useContext(Context);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isBookMarkActive, setIsBookMarkActive] = useState(false);
+
+  return (
+    <header className="flex justify-between lg:justify-around items-center m-auto w-full md:w-[80%] lg:w-[85%] px-6">
+      <div>
+        <Book size={42} strokeWidth={0.7} color="#888" />
+      </div>
+
+      <div className="flex gap-3 justify-between items-center ml-3">
+        <Font isVisible={isVisible} setIsVisible={setIsVisible} />
+
+        <Button
+          className={` relative`}
+          onClick={() => {
+            setIsBookMarkActive(!isBookMarkActive);
+          }}
+        >
+          <Bookmark
+            size={24}
+            strokeWidth={1}
+            className={`${isBookMarkActive ? "fill-purple-500 text-white" : "fill-transparent"} cursor-pointer `}
+          />
+        </Button>
+
+        <Button
+          onClick={() => {
+            setIsActive(!isActive);
+          }}
+        >
+          {isActive ? (
+            <ToggleLeft size={22} strokeWidth={1} className="cursor-pointer" />
+          ) : (
+            <ToggleRight size={22} strokeWidth={1} className="cursor-pointer" />
+          )}
+        </Button>
+      </div>
+
+      {isBookMarkActive && <BookMark />}
+    </header>
+  );
+}
+
+export default Header;

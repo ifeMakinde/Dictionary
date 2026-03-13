@@ -1,37 +1,17 @@
-import "./App.css";
-import { useState } from "react";
-import Valentine from "./Components/Valentine";
-import Music from "./Components/Music";
-import Memories from "./Components/Memories";
-import Yes from "./Components/Yes";
-import Letter from "./Components/Letter";
+import React from "react";
+import Header from "./components/Header/Header";
+import Search from "./components/Search";
+import Main from "./components/Main/Main";
+// import { GlobalContext } from "./components/Context/GlobalContext";
 
 function App() {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
   return (
-    <>
-      <div
-        className={`relative ${isModalVisible ? "blur-lg shadow-background" : "blur-none"}`}
-      >
-        <Valentine
-          isModalVisible={isModalVisible}
-          setIsModalVisible={setIsModalVisible}
-        />
-        <Memories />
-        <Music />
-        <Letter />
-      </div>
-
-      {isModalVisible && (
-        <Yes
-          isOpen={isModalVisible}
-          onClose={() => {
-            setIsModalVisible(false);
-          }}
-        />
-      )}
-    </>
+    <div>
+      <div className={`mt-6 lg:mt-8 relative`}></div>
+      <Header />
+      <Search />
+      <Main />
+    </div>
   );
 }
 
