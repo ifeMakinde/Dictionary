@@ -74,7 +74,7 @@ function MainContent() {
                 {meanings[0].synonyms.map((synonym) => (
                   <a
                     key={synonym}
-                    href={`https://api.dictionaryapi.dev/api/v2/entries/en/${synonym}`}
+                    href="#"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-purple-600 hover:underline "
