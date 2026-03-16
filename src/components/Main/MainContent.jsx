@@ -4,16 +4,28 @@ import Button from "../Button";
 import Divider from "../Divider";
 import { useContext } from "react";
 import { Context } from "../Context/GlobalContext";
+import { useAudio } from "../Hook/useAudio";
 
 function MainContent() {
-  const { searchedWordData } = useContext(Context);
+  const { dispatch, searchedWord, searchedWordData, setQuery, bookmarks } =
+    useContext(Context);
+  const { isPlaying, play } = useAudio();
   const {
-    license,
+    // license,
     meanings, // an array of objects that contains the meaning of the word in different parts of speech
     phonetic,
     phonetics, //an array of objects that contains the phonetic and audio of the word
     word,
   } = searchedWordData;
+
+  const isBookmarked = bookmarks.includes(word);
+
+  const handleBookMark = () => {
+    dispatch({
+      type: isBookmarked ? "remove" : "add",
+      payload: word,
+    });
+  };
   return (
     <section className="max-w-full text-start p-4">
       {/* Word, Audio, and Phonetics */}
@@ -28,16 +40,25 @@ function MainContent() {
         {/* audio button and bookmark container */}
         <div className="flex flex-col items-center gap-4">
           {phonetics[0]?.audio && (
-            <Button className="rounded-full bg-purple-200 hover:bg-purple-700 p-3 lg:p-4 text-center">
+            <Button
+              className="rounded-full bg-purple-200 p-3 hover:bg-purple-700 focus:bg-purple-700 lg:p-4 text-center "
+              onClick={play}
+            >
               <AudioLines
                 size={28}
-                strokeWidth={1}
-                className="text-black hover:text-white"
+                strokeWidth={1.2}
+                className="text-black hover:text-white focus:text-white"
               />
             </Button>
           )}
-          <Button>
-            {<Bookmark size={28} color="grey" strokeWidth={1.5} />}
+          <Button onClick={handleBookMark}>
+            <Bookmark
+              size={28}
+              color="gray"
+              fill={isBookmarked ? "#ad46ff" : "transparent"}
+              strokeWidth={1.2}
+              className=" cursor-pointer"
+            />
           </Button>
         </div>
       </div>
@@ -46,8 +67,8 @@ function MainContent() {
       {meanings[0].partOfSpeech && (
         <div className="flex flex-col gap-3 mt-4">
           {/* parts of speech */}
-          <div className="flex item-center gap-1">
-            <h2 className="italic font-bold  text-base ">
+          <div className="flex justify-center items-center gap-2">
+            <h2 className="italic font-bold text-base ">
               {meanings[0].partOfSpeech}
             </h2>
             <Divider />
@@ -70,14 +91,17 @@ function MainContent() {
           {meanings[0].synonyms?.length > 0 && (
             <div className="flex gap-2">
               <h3 className="capitalize text-gray-500">synonyms</h3>
-              <li className="flex gap-2">
-                {meanings[0].synonyms.map((synonym) => (
+              <li className="flex gap-2 flex-wrap">
+                {meanings[0].synonyms.map((synonym, i) => (
                   <a
-                    key={synonym}
-                    href={`https://api.dictionaryapi.dev/api/v2/entries/en/${synonym}`}
+                    key={i}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-purple-600 hover:underline "
+                    className="text-purple-600 hover:underline cursor-pointer"
+                    onClick={() => {
+                      setQuery(synonym);
+                      searchedWord(synonym);
+                    }}
                   >
                     {synonym}
                   </a>

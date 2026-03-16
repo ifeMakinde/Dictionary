@@ -17,13 +17,12 @@ export function useAxiosHook() {
     try {
       setIsloading(true);
       const response = await axios.get(`${BASE_URL}${query}`);
-      if (!response.ok) {
-        setError("something went wrong, please try again");
-        return;
-      }
+      if (!response.ok) setError("something went wrong, please try again");
+
       setSearchedWordData(response.data[0]);
     } catch (error) {
-      console.error(`Error fetching word: ${error.message}`);
+      if (error.message === "Network Error")
+        console.error(`Error fetching word: ${error.message}`);
       setError("SOMETHING WENT WRONG");
     } finally {
       setIsloading(false);

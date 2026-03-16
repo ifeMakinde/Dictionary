@@ -1,12 +1,12 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { SearchIcon, CircleAlert } from "lucide-react";
 import { Context } from "./Context/GlobalContext";
 import Button from "./Button";
 import Toast from "./Toast";
 
 function Search() {
-  const [query, setQuery] = useState("");
-  const { error, setError, searchedWord } = useContext(Context);
+  const { query, setQuery, error, setError, searchedWord } =
+    useContext(Context);
 
   // handlesForm submission
   const handleSubmit = (event) => {

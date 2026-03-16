@@ -1,27 +1,7 @@
 import React from "react";
-import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { useRef } from "react";
-import { useEffect } from "react";
 
 const Font = ({ isVisible, setIsVisible }) => {
-  // const [isvisible, setIsVisible] = useState(false);
-
-  // const fontModal = useRef(null);
-  // useEffect(() => {
-  //   const handleModalClose = (e) => {
-  //     if (fontModal.current && !fontModal.current.contains(e.target)) {
-  //       // setIsVisible(false);
-  //       console.log(e.target);
-  //       console.log(fontModal.current);
-  //     }
-  //   };
-  //   handleModalClose();
-
-  //   window.addEventListener("click", handleModalClose);
-  //   window.removeEventListener("click", handleModalClose);
-  // }, [setIsVisible]);
-
   return (
     <div className=" flex justify-between items-center gap-2 relative">
       <h3 className="text-sm lg:text-base font-semibold capitalize">
