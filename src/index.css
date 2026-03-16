@@ -13,6 +13,11 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+@theme {
+  --color-primary: #fff;
+  --color-primary-dark: #000;
+}
+/* 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -130,4 +135,4 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-}
+} */

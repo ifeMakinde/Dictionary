@@ -2,13 +2,14 @@ import React, { useState, useContext } from "react";
 import { Book, Bookmark, ToggleRight, ToggleLeft } from "lucide-react";
 import Button from "../Button";
 import Font from "./Font";
-import BookMark from "../Bookmark";
+import BookMark from "../Bookmark/Bookmark";
 import { Context } from "../Context/GlobalContext";
 
 function Header() {
-  const { isActive, setIsActive } = useContext(Context);
+  const { isActive, setIsActive, isBookMarkActive, setIsBookMarkActive } =
+    useContext(Context);
   const [isVisible, setIsVisible] = useState(false);
-  const [isBookMarkActive, setIsBookMarkActive] = useState(false);
+  // const [isBookMarkActive, setIsBookMarkActive] = useState(false);
 
   return (
     <header className="flex justify-between lg:justify-around items-center m-auto w-full md:w-[80%] lg:w-[85%] px-6">
@@ -38,9 +39,9 @@ function Header() {
           }}
         >
           {isActive ? (
-            <ToggleLeft size={22} strokeWidth={1} className="cursor-pointer" />
+            <ToggleRight size={24} strokeWidth={1} className="cursor-pointer" />
           ) : (
-            <ToggleRight size={22} strokeWidth={1} className="cursor-pointer" />
+            <ToggleLeft size={24} strokeWidth={1} className="cursor-pointer" />
           )}
         </Button>
       </div>

@@ -12,6 +12,7 @@ function Main() {
       {isLoading && <Loader />}
       {!isLoading && !searchedWordData.word && <DefaultState />}
       {!isLoading && searchedWordData.word && <MainContent />}
+      {/* {searchedWordData.word} */}
     </main>
   );
 }

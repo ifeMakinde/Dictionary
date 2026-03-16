@@ -7,7 +7,7 @@ import { GlobalContext } from "./components/Context/GlobalContext";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <GlobalContext>
-      <App />
+    <App />
     </GlobalContext>
   </StrictMode>,
 );
