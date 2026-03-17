@@ -4,7 +4,7 @@ import { Context } from "../Context/GlobalContext";
 function useAudio() {
   const { searchedWordData } = useContext(Context);
   const { phonetics } = searchedWordData;
-  const audioUrl = phonetics[0].audio;
+  const audioUrl = phonetics[0]?.audio;
   const audioRef = useRef(new Audio(`${audioUrl}`));
 
   const [isPlaying, setIsPlaying] = useState(false);
