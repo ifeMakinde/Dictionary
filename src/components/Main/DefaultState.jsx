@@ -14,7 +14,7 @@ function DefaultState() {
         <h2 className="font-bold text-[#161616] dark:text-white text-[20px] lg:text-[24px]">
           Welcome to Dictionary App
         </h2>
-        <p className="text-[12px] md:text-[14px] lg:text-base">
+        <p className="text-[12px] lg:text-[14px]">
           type any word into the search box to find its meaning, pronunciation,
           see its transcription, discover similar words,plus more helpful
           details-all in one place
