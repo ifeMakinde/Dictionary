@@ -9,6 +9,11 @@ export function GlobalContext({ children }) {
   const [isActive, setIsActive] = useState(false);
   const [isBookMarkActive, setIsBookMarkActive] = useState(false);
   const [query, setQuery] = useState("");
+  const [toast, setToast] = useState({
+    message: "",
+    type: "error",
+    show: false,
+  });
   const { bookmarks, dispatch } = useBookmark();
   const {
     isLoading,
@@ -18,6 +23,15 @@ export function GlobalContext({ children }) {
     searchedWord,
     searchedWordData,
   } = useAxiosHook();
+
+  const showToast = (message, type = "info", duration = 3000) => {
+    setToast({ message, type, show: true });
+    if (duration) {
+      setTimeout(() => {
+        setToast({ message: "", type: "info", show: false });
+      }, duration);
+    }
+  };
 
   return (
     <Context.Provider
@@ -36,6 +50,9 @@ export function GlobalContext({ children }) {
         searchedWordData,
         bookmarks,
         dispatch,
+        toast,
+        setToast,
+        showToast,
       }}
     >
       {children}

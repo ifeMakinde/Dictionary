@@ -1,21 +1,17 @@
 import { useContext } from "react";
-import { SearchIcon, CircleAlert } from "lucide-react";
-import { Context } from "./Context/GlobalContext";
+import { SearchIcon } from "lucide-react";
+import { Context } from "../Context/GlobalContext";
 import Button from "./Button";
 import Toast from "./Toast";
 
 function Search() {
-  const { query, setQuery, error, setError, searchedWord } =
-    useContext(Context);
+  const { query, setQuery, searchedWord, showToast } = useContext(Context);
 
   // handlesForm submission
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!query.trim()) {
-      setError("enter a word to search it's meaning");
-      setTimeout(() => {
-        setError("");
-      }, 2000);
+      showToast("Enter a word to search its meaning", "warning", 2500);
       return;
     }
     searchedWord(query); //calling the function passed as prop from app component.
@@ -33,7 +29,7 @@ function Search() {
           type="text"
           value={query}
           placeholder="Search for any word..."
-          className="bg-gray-50 font-bold p-3.5 rounded-xl w-full lg:w-[70%] xl:w-[60%] focus:outline-purple-600 focus:outline-[0.5px]"
+          className="bg-gray-50 dark:text-black font-bold p-4 rounded-xl w-full lg:w-[70%] xl:w-[60%] focus:outline-purple-600 focus:outline-[0.5px]"
           onChange={(e) => {
             setQuery(e.target.value);
           }}
@@ -50,13 +46,6 @@ function Search() {
           />
         </Button>
       </form>
-
-      {error && (
-        <Toast className="mt-2 flex justify-center gap-1 lg:justify-center items-center bg-white absolute top-0 left-[15%] lg:left-[30%] right-[20%] shadow-lg">
-          <CircleAlert color="red" strokeWidth={1} />
-          <h4 className=" text-[12px] lg:text-[14px]">{error}</h4>
-        </Toast>
-      )}
     </div>
   );
 }

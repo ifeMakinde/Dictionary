@@ -3,11 +3,12 @@ import { Book, Bookmark, ToggleRight, ToggleLeft } from "lucide-react";
 import Button from "../Button";
 import Font from "./Font";
 import BookMark from "../Bookmark/Bookmark";
-import { Context } from "../Context/GlobalContext";
+import { Context } from "../../Context/GlobalContext";
+import { useTheme } from "../../Context/ThemeContext";
 
 function Header() {
-  const { isActive, setIsActive, isBookMarkActive, setIsBookMarkActive } =
-    useContext(Context);
+  const { isBookMarkActive, setIsBookMarkActive } = useContext(Context);
+  const { isActive, Toggle } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
   // const [isBookMarkActive, setIsBookMarkActive] = useState(false);
 
@@ -21,27 +22,23 @@ function Header() {
         <Font isVisible={isVisible} setIsVisible={setIsVisible} />
 
         <Button
-          className={` relative`}
+          className={`relative`}
           onClick={() => {
             setIsBookMarkActive(!isBookMarkActive);
           }}
         >
           <Bookmark
-            size={24}
+            size={26}
             strokeWidth={1}
-            className={`${isBookMarkActive ? "fill-purple-500 text-white" : "fill-transparent"} cursor-pointer `}
+            className={`${isBookMarkActive ? "fill-purple-500 text-transparent" : "fill-transparent"} cursor-pointer `}
           />
         </Button>
 
-        <Button
-          onClick={() => {
-            setIsActive(!isActive);
-          }}
-        >
+        <Button onClick={() => Toggle()}>
           {isActive ? (
-            <ToggleRight size={24} strokeWidth={1} className="cursor-pointer" />
+            <ToggleRight size={26} strokeWidth={1} className="cursor-pointer" />
           ) : (
-            <ToggleLeft size={24} strokeWidth={1} className="cursor-pointer" />
+            <ToggleLeft size={26} strokeWidth={1} className="cursor-pointer" />
           )}
         </Button>
       </div>

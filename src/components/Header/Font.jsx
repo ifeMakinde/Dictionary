@@ -18,7 +18,7 @@ const Font = ({ isVisible, setIsVisible }) => {
 
       {isVisible && (
         <div
-          className=" flex flex-col gap-2 absolute top-5 right-2 bg-white text-black text-center p-8 w-45 mt-2 shadow-lg border rounded-xl z-1000 "
+          className=" flex flex-col gap-2 absolute top-5 right-2 bg-white dark:bg-black dark:text-white dark:border-purple-700 text-center p-8 w-45 mt-2 shadow-lg border rounded-xl z-1000 "
           // ref={fontModal}
         >
           <h3 className="cursor-pointer">san serif</h3>

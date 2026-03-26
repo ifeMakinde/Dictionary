@@ -3,12 +3,18 @@ import { AudioLines, Bookmark } from "lucide-react";
 import Button from "../Button";
 import Divider from "../Divider";
 import { useContext } from "react";
-import { Context } from "../Context/GlobalContext";
-import { useAudio } from "../Hook/useAudio";
+import { Context } from "../../Context/GlobalContext";
+import { useAudio } from "../../Hook/useAudio";
 
 function MainContent() {
-  const { dispatch, searchedWord, searchedWordData, setQuery, bookmarks } =
-    useContext(Context);
+  const {
+    dispatch,
+    searchedWord,
+    searchedWordData,
+    setQuery,
+    bookmarks,
+    showToast,
+  } = useContext(Context);
   const { isPlaying, play } = useAudio();
   const {
     // license,
@@ -21,17 +27,25 @@ function MainContent() {
   const isBookmarked = bookmarks.includes(word);
 
   const handleBookMark = () => {
+    const newBookmarkState = !isBookmarked;
     dispatch({
-      type: isBookmarked ? "remove" : "add",
+      type: newBookmarkState ? "add" : "remove",
       payload: word,
     });
+    showToast(
+      newBookmarkState
+        ? `word added to bookmarks!`
+        : `word removed from bookmarks`,
+      "success",
+      2500,
+    );
   };
   return (
     <section className="max-w-full text-start p-4">
       {/* Word, Audio, and Phonetics */}
       <div className="flex justify-between items-center ">
         <div className="flex flex-col gap-5 justify-center items-start">
-          <h2 className="text-3xl lg:text-5xl font-bold">{word}</h2>
+          <h2 className="text-4xl lg:text-6xl font-bold">{word}</h2>
           <p className="font-semibold text-purple-600 text-base lg:text-[18px]">
             {phonetic}
           </p>
@@ -41,13 +55,13 @@ function MainContent() {
         <div className="flex flex-col items-center gap-4">
           {phonetics[0]?.audio && (
             <Button
-              className="rounded-full bg-purple-200 p-3 hover:bg-purple-700 focus:bg-purple-700 lg:p-4 text-center "
+              className=" group rounded-full bg-purple-300 p-3 hover:bg-purple-700 focus:bg-purple-700 lg:p-4 text-center "
               onClick={play}
             >
               <AudioLines
                 size={28}
-                strokeWidth={1.2}
-                className="text-black hover:text-white focus:text-white"
+                strokeWidth={1.7}
+                className="text-purple-700 group-hover:text-white group-focus:text-white transition-colors"
               />
             </Button>
           )}

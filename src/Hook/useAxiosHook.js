@@ -10,23 +10,29 @@ export function useAxiosHook() {
 
   // function passed as object to the app comp and as prop to search component to be called when the form is submitted..
   const searchedWord = async function (query) {
-    console.log("the console ISNT WORKING");
-    console.log("query recived : ", query);
     if (typeof query !== "string" || query.length < 1) return; //checks if the search exist and if it does if it's greater than 1 character...
 
     try {
       setIsloading(true);
+      setError("");
       const response = await axios.get(`${BASE_URL}${query}`);
-      if (!response.ok) setError("something went wrong, please try again");
-
       setSearchedWordData(response.data[0]);
     } catch (error) {
-      if (error.message === "Network Error")
-        console.error(`Error fetching word: ${error.message}`);
-      setError("SOMETHING WENT WRONG");
+      let errorMessage;
+      // Handle different error types
+      if (!error.response) {
+        // Network error - no response from server
+        errorMessage =
+          "Something went wrong. Please check your internet connection.";
+      } else if (error.response.status === 404) {
+        errorMessage = "Word not found ";
+        // errorMessage = "";
+      }
+
+      setError(errorMessage);
+      // console.error(`Error fetching word: ${errorMessage}`, error);
     } finally {
       setIsloading(false);
-      setError("");
     }
   };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Book } from "lucide-react";
-import { Context } from "../Context/GlobalContext";
+import { Context } from "../../Context/GlobalContext";
 import Toast from "../Toast";
 
 function DefaultState() {
@@ -11,10 +11,10 @@ function DefaultState() {
       </div>
 
       <div className="flex flex-col justify-between items-center gap-3">
-        <h2 className="font-bold text-[#161616] text-[18px] lg:text-[20px]">
+        <h2 className="font-bold text-[#161616] dark:text-white text-[20px] lg:text-[24px]">
           Welcome to Dictionary App
         </h2>
-        <p className="text-[12px] md:text-[14px] lg:text-[14px]">
+        <p className="text-[12px] md:text-[14px] lg:text-base">
           type any word into the search box to find its meaning, pronunciation,
           see its transcription, discover similar words,plus more helpful
           details-all in one place
