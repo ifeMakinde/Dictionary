@@ -28,7 +28,7 @@ function Header() {
           }}
         >
           <Bookmark
-            size={26}
+            size={24}
             strokeWidth={1}
             className={`${isBookMarkActive ? "fill-purple-500 text-transparent" : "fill-transparent"} cursor-pointer `}
           />
@@ -36,9 +36,9 @@ function Header() {
 
         <Button onClick={() => Toggle()}>
           {isActive ? (
-            <ToggleRight size={26} strokeWidth={1} className="cursor-pointer" />
+            <ToggleRight size={24} strokeWidth={1} className="cursor-pointer" />
           ) : (
-            <ToggleLeft size={26} strokeWidth={1} className="cursor-pointer" />
+            <ToggleLeft size={24} strokeWidth={1} className="cursor-pointer" />
           )}
         </Button>
       </div>
